@@ -13,7 +13,7 @@ Difference comparing with original repository:
 
 * Summarize user-friendly instructions in README
 * Use `config.yml` to organize the information to share information across different purpose.
-* Automatically generate the `template.pdf` and `template.png` with GitHub Actions.
+* Automatically generate the `config.pdf` and `config.png` with GitHub Actions.
 * Add extra LaTeX commands to suit more applications.
 * Comply with rules from USC recommendations in VMock.
     * Bold for job title.
@@ -25,7 +25,7 @@ Difference comparing with original repository:
 
 ## Preview
 
-![Resume Screenshot](template.png)
+![Resume Screenshot](config.png)
 
 It will be automatically generated after committing the `config.yml`.
 
@@ -47,12 +47,12 @@ Steps:
 1. Fork this repository.
 2. Learn the format of YAML: [Simple Guide](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
 3. Read the short [Practical Guide](#practical-guide) for `config.yml` to know the most-used structures.
-4. Refer to [config.yml format](#configyml-format), study the structures by looking at `template.pdf` and `config.yml` side by side.
+4. Refer to [config.yml format](#configyml-format), study the structures by looking at `config.pdf` and `config.yml` side by side.
 5. Modify `config.yml` with your content and make sure `config.yml` is syntactically correct.
     * [Online Lint](https://www.yamllint.com/) if you need.
 6. Commit it to the repository.
 7. ~~Then make a cup of tea.~~ Wait for the GitHub Actions to complete. Link example: <https://github.com/Karl-Han/resume/actions>
-8. Get the `template.pdf` in the repository! Your new Resume! You are all set!
+8. Get the `config.pdf` in the repository! Your new Resume! You are all set!
 
 For further reuse, please follow me or refer to [sproogen/modern-resume-theme](https://github.com/sproogen/modern-resume-theme) website. I have [my own website](https://www.iwktd.com/) with this template.
 
@@ -60,7 +60,7 @@ For further reuse, please follow me or refer to [sproogen/modern-resume-theme](h
 
 You have to install LaTeX, Python3 and Make in the command line, I would recommend you to use BasicTeX with homebrew: https://tex.stackexchange.com/questions/307483/setting-up-basictex-homebrew
 
-Possible LaTeX package requirements: `tlmgr install preprint marvosym enumitem`
+Possible LaTeX package requirements: `tlmgr install titlesec preprint marvosym enumitem babel-english`
 
 Python package requirements: `python3 -m pip install -r requirements.txt`
 

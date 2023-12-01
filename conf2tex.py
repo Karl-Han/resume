@@ -3,6 +3,14 @@ import sys
 from urllib.parse import urlsplit
 
 def get_section(section):
+    """parse section to tex format
+
+    Args:
+        section (dict)
+
+    Returns:
+        tex: str
+    """
     if 'show' in section and section['show'] == False:
         return 
     sec = f"\\section{{{section['title'].upper()}}}\n"
@@ -25,6 +33,8 @@ def get_section(section):
                 if 'location' not in item:
                     item['location'] = ''
                 sec += subheading_notitle % (item['title'], item['location'])
+            if 'extra' in item:
+                sec += "\\vspace{{+5pt}}\\\\ \\small{{{}}}\\\\ ".format(item['extra'])
             desc = ""
             if 'description' in item:
                 desc += "\\resumeItemListStart\n"
@@ -64,11 +74,19 @@ def get_heading(conf):
     email = conf['email']
     if "phone" in conf:
         phone = conf['phone']
-        heading += " $|$ \href{tel:{{}}}{{{}}}".format(phone, phone)
+        heading += " $|$ Phone: \href{{tel:{{}}}}{{{}}}".format(phone, phone)
     heading += "\n}"
     return heading % (website, name, email, email, website, website_path)
 
 def to_tex(conf):
+    """convert YAML to tex format
+
+    Args:
+        conf (YAML Reader)
+
+    Returns:
+        tex: str
+    """
     tex = ""
     with open("preamble.tex", "r") as f:
         tex = f.read()
@@ -77,8 +95,10 @@ def to_tex(conf):
     if 'order' in conf:
         section_dict = {}
         for section in conf['content']:
+            # enumerate global content
             section_dict[section['title']] = section
         for sec_name in conf['order']:
+            # decide the order and content of sections
             tex += get_section(section_dict[sec_name])
     else: 
         for section in conf['content']:

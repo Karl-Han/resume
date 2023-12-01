@@ -5,7 +5,7 @@ email: kunlinha@usc.edu
 website: https://www.linkedin.com/in/kunlinhan/
 extra_links:
   - Github (Karl-Han): https://github.com/Karl-Han
-  - Personal Website: https://www.iwktd.com/
+  - Detailed Resume: https://www.iwktd.com/
 
 order:
   - Education
@@ -28,13 +28,15 @@ content:
       - title: University of Southern California (USC)
         location: Los Angeles, CA
         sub_title: |
-          Master of Electrical Engineering; GPA: 4.0/4.0
-        duration: 12/2021-12/2023
+          Master of Electrical Engineering (MS Honors Fellow); GPA: 4.0/4.0
+        duration: Dec 2021 - Dec 2023
+        # extra: "Major Courses: EE-457 Computer System Organization, EE-560L Digital System Design, EE-552 Asynchronous VLSI, EE-557 Computer Systems Architecture"
       - title: South China Normal University (SCNU)
         location: Guangzhou, China
         sub_title: |
           Bachelor of Network Engineering; GPA: 3.78/4.0; Rank: 1/72
-        duration: 09/2017-06/2021
+        duration: Sep 2017 - Jun 2021
+        # extra: "Major Courses: Computer Network, Cryptography, Operating System, Compiler Theory"
 
   - title: Experience
     layout: list
@@ -42,17 +44,17 @@ content:
       - title: CS Department, USC
         location: Los Angeles, CA
         sub_title: Graduate Teaching Assistant
-        duration: 05/2022-08/2022
+        duration: May 2022 - Aug 2022
         link: https://bytes.usc.edu/cs455saty/m22_Coding-Rocks/home/index.html
         # description: 
         #   - Coordinated with Prof. Saty Raghavachary as teaching assistant (course producer) in CSCI-455X Introduction to Programming Systems Design.
         #   - Presented labs to help students to understand the usage and importance of debugging (GDB) and get an overview of Computer Systems.
         #   - Held weekly office hours to help students with problems in assignments and labs.
-      - show: false
-        title: Lab 131, School of Computer Science, SCNU
+      - title: Lab 131, School of Computer Science, SCNU
+        show: false
         location: Los Angeles, CA
         sub_title: Instructor
-        duration: 09/2018-06/2021
+        duration: Sep 2018 - Jun 2021
         # description: 
         #   - Recruited and manage members for the Lab. 
         #   - "Organized and instructed members to study CS topics: Algorithm (CLRS), Linear Algebra (GSLA), Computer System (CSAPP), Computation Theory (ITOC) and Functional Programming (SICP). "
@@ -60,39 +62,83 @@ content:
   - title: Projects # Title for the section
     layout: list # Type of content section (list/text)
     content:
-      - title: Tomasulo Out-of-Order CPU
-        location: 06/2023-08/2023
+      - title: Branch Predictor and Prefetcher Implementation and Simulation
+        show: true
+        location: Aug 2023 - Oct 2023
         description: 
-          - Implemented Issue Unit, 2-stage Dispatch Unit, Re-Order Buffer and FPGA-friendly Copy-Free Check Pointing, which restores FRAT with RRAT.
+          - Implemented and simulated bimodal predictor and correlated-branch predictor with Pin Tool to compare performance on benchmarks.
+          - Designed and explored design space by trading off cache hierarchy, execution unit and issue width on OoO CPU on gem5, and achieve 25\% higher throughput with 5\% extra transistor count comparing with the baseline design.
+          - Studied and simulated prefetchers, including Markov predictor, content-directed prefetcher and access map pattern matching prefetcher.
+      - title: Arm Cortex-A7 MPCore Block-Level Implementation
+        show: false
+        location: Aug 2023 - Oct 2023
+        description: 
+          - Developed floorplans for Cortex-A7 Core with 32KB L1 DCache and 32KB L1 ICache on 700x840um budget in Innovus using TSMC N28HPC\_1P10M\_5x2y2z.
+          - Completed Clock Tree Synthesis and optimization with clock tree length around 410ps and clock skew around 40ps.
+          - Extracted RC with StarRC, passed timing signoff in PrimeTime and applied ECO from PrimeTime to optimize slack of setup and hold.
+          - Cleared DRC and LVS problems in the merged GDSII with Calibre.
+      - title: Performance Analysis of Predictors with Pin Tool
+        show: false
+        location: Aug 2023 - Oct 2023
+        description: 
+          - Implemented always-taken Branch Predictor, 2-bit Global Branch Predictor, 32-entry 2-bit Bimodal Branch Predictor, 32-entry Correlated Branch Predictor with 4-bit history.
+          - Profiled the performance of the above branch predictors.
+      - title: Tomasulo Out-of-Order CPU Design
+        show: true
+        location: Jun 2023 - Aug 2023
+        description: 
+          - Implemented Issue Unit, 2-stage Dispatch Unit, Re-Order Buffer and FPGA-friendly Copy-Free Check Pointing for FRAT and RRAT.
           - Integrated, synthesized and programmed the overall system on Xilinx Artix-7 FPGA board.
           - Validated the correctness of design with both simulation and on-chip logic analyzer (Chipscope).
+      - title: PCIe Physical Layer Design
+        show: false
+        location: Jun 2023 - Aug 2023
+        description: 
+          - Designed Elastic Buffer with Primed Method
+      - title: General Purpose Graphical Processing Unit (GPGPU)
+        show: false
+        location: Jun 2023 - Aug 2023
+        description: 
+          - Case study on dual-issue GPGPU with Scoreboard, SIMT stack, operand collector, banked register file, memory address coalescing.
+          - Wrote multiple assembly programs to draw different geometrical shapes for GPGPU supporting SIMT stack.
       - title: 512-bit 6T SRAM Array Design
-        location: 01/2023-05/2023
+        show: true
+        location: Jan 2023 - May 2023
         description: 
           - Designed and drew layout of 1-bit SRAM cell, row/column decoder, sense amplifier, write driver, precharge circuit, latch and flip-flop with Cadence Virtuoso and GPDK 45nm.
-          - Achieved the Read SNM of 210 mV and Write SNM of 395 mV by proper sizing with VDD=1V while minimizing the size of 1-bit SRAM cell.
+          - Achieved the Read SNM of 210 mV and Write SNM of 395 mV by proper sizing with VDD=1V.
           - Integrated components into 4 8x16-bit SRAM banks to construct a 512-bit SRAM Array with the area of 2208 $nm^2$ in 2.6 Ghz (cycle time=0.4 ns).
-          - Measured the power consumption with Spectre, in which the average consumption for reading is 21.2 fJ, the average consumption for writing is 342 fJ and leakage is around 20 fJ.
-          - Validated the correctness of all aforementioned components with vector file in Spectre and cleared DRC and LVS errors.
-      - title: Extensible Asynchronous SNN Accerlator
-        location: 01/2023-05/2023
+          - Measured the power consumption with Spectre, in which the average consumption for reading is 21.2 fJ, the average consumption for writing is 342 fJ and leakage is 20 fJ.
+          - Validated the correctness of all aforementioned components with vector file in Spectre and passed DRC and LVS.
+      - title: Extendable Asynchronous SNN Accerlator Design
+        show: true
+        location: Jan 2023 - May 2023
         description: 
-          - Designed extensible asynchronous SNN accelerator in SystemVerilog with SystemVerilogCSP library on a 5x5 filter and 25x25 ifmap with stride=1.
-          - Implemented fork-join computation module that can calculate part of the overall computation with pre-configured parameter for extensibility.
-          - Integrated computation modules with two memory modules, which contain filter map and ifmap respectively, on a mesh network.
+          - Designed extendable asynchronous SNN accelerator in SystemVerilog with SystemVerilogCSP library on a 5x5 filter and 25x25 ifmap with stride=1.
+          - Implemented configurable fork-join computation module for partial computation.
+          - Integrated computation modules with two memory modules on a deterministic mesh network.
           - Verified correctness of computation module and the accelerator separately with timestep=2 in QuestaSim.
-      - show: false
-        title: 5-stage Pipeline MIPS Processor
-        location: 09/2022-10/2022
+      - title: 5-stage Pipeline MIPS Processor Design
+        show: false
+        location: Sep 2022 - Oct 2022
         description: 
           - Described Data Path Unit and Control Unit for single-cycle CPU with basic MIPS instructions.
           - Resolved problems related to Data Dependency and Early Branching.
-          - Utilized Verilog to build 5-stage pipeline with encoded control signal, Internal Forwarding Register File and Early Branching.
+          - Implemented 5-stage pipeline with encoded control signal, Internal Forwarding Register File and Early Branching in Verilog.
       - title: Full-Custom Design Layout of Arbiter System with Multiplier and Divider
-        location: 11/2022-12/2022
+        show: false
+        location: Nov 2022 - Dec 2022
         description: 
           - Designed, implemented and drew layout of an ALU supporting 5-bit multiplication and 10-bit division and a 2-1 Round-Robin-based Arbiter with the Cadence Virtuoso and GPDK 45nm.
-          - Planned, routed and simulated all aforementioned components with Cadence Virtuoso and Spectre and cleared DRC and LVS errors with Mentor Graphics Calibre. 
+          - Planned, routed and simulated all aforementioned components with Cadence Virtuoso and Spectre.
+          - Cleared DRC and LVS errors with Mentor Graphics Calibre. 
+      - title: RSA, AES and SHA-3 Implementation in Rust
+        show: false
+        location: Sep 2019 - Dec 2019
+        description:
+          - Theoretically studied and programmatically implemented an array of cryptographic algorithms
+          - Implemented RSA public-key algorithm, Advanced Encryption Standard (AES) symmetric encryption algorithm, and SHA-3 in Rust.   
+
 
   - title: Leadership and Involvement
     layout: list
@@ -100,7 +146,7 @@ content:
       - title: Hope Center, Reality L.A.
         location: Los Angeles, CA
         sub_title: Volunteer
-        duration: 03/2022-08/2022
+        duration: Mar 2022 - Aug 2022
         # description: 
         #   - Sorted, organized and shelved food donations for storage to preserve food and accelerate cooking.
         #   - Managed and distributed cooked food with other volunteers.
@@ -108,7 +154,7 @@ content:
       - title: Network Club, SCNU
         location: Guangzhou, China
         sub_title: Vice President of Technical Department
-        duration: 09/2017-06/2019
+        duration: Sep 2017 - Jun 2019
         # description: 
         #   - Managed existing members and held interviews to recruit members for Technical department.
         #   - Provided technical supports to on-campus IT activities, including development and maintenance of school forum, holding CTF competition.
@@ -117,9 +163,7 @@ content:
   - title: Skills
     layout: text
     content: 
-      - Programming Languages: Python, C/C++, Verilog, VHDL, SystemVerilog, Java, Rust, SQL, x86 ASM
+      - Programming Languages: Python, C/C++, Verilog, VHDL, SystemVerilog, Tcl, Perl, Java, Rust, SQL
       - Libraries: Scrapy, BeautifulSoup, Requests, Pyrogram, Django
-      # - Cadence Tools: Virtuoso, Spectre
-      # - Mentor Graphics Tools: ModelSim, QuestaSim, Calibre
-      - EDA Tools: Virtuoso, Spectre, QuestaSim, Calibre, Intel Quartus, Xilinx Vivado
+      - EDA Tools: Virtuoso, Spectre, QuestaSim, Calibre, Intel Quartus, Xilinx Vivado, Innovus, StarRC, PrimeTime
       - Protocols: AXI, PCIe, MOESI \hspace{\fill} \textbf{Tools:} UNIX, Linux, VIM, Git, Docker, Makefile

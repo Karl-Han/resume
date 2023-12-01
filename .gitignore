@@ -1,5 +1,9 @@
 # Archieve
 Archieve/
+!config.*
+*.yml
+*.pdf
+*.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

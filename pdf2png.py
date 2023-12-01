@@ -1,4 +1,10 @@
+import sys
+
 from pdf2image import convert_from_path, convert_from_bytes
 
-images = convert_from_path('./template.pdf', size=3000, dpi=400)[0]
-images.save('template.png', 'PNG')
+config_name = sys.argv[1]
+
+images = convert_from_path(config_name + ".pdf", size=3000, dpi=400)[0]
+
+if config_name == "config":
+    images.save('config.png', 'PNG')

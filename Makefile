@@ -1,13 +1,21 @@
-build: config.yml preamble.tex template.tex
-	`which python3` conf2tex.py config.yml template.tex
-	pdflatex template.tex
-	`which python3` pdf2png.py
+CONFIG_NAME ?= config
+DATE := $(shell date -u +%Y%m%d)
 
-template: template.tex
-	pdflatex template.tex
+.PHONY: pre-build build
 
-tex: ${var}.tex
-	pdflatex ${var}.tex
+pre-build:
+ifneq (${CONFIG_NAME}, config)
+	$(info "defined CONFIG_NAME") 
+endif
+
+
+build: ${CONFIG_NAME}.yml preamble.tex pre-build
+	`which python3` conf2tex.py ${CONFIG_NAME}.yml ${CONFIG_NAME}.tex
+	pdflatex ${CONFIG_NAME}.tex
+	`which python3` pdf2png.py ${CONFIG_NAME}
+
+pdf: ${CONFIG_NAME}.tex
+	pdflatex ${CONFIG_NAME}.tex
 
 clean:
 	rm *.aux *.log *.out
