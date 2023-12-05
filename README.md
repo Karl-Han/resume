@@ -6,7 +6,8 @@ New features comparing with original repository:
 
 * Summarize user-friendly instructions in README.
 * Use `master.yml` to store all information you want to include in the resume.
-* Use `config.yml` as template for version configration to organize the information.
+* Use `version_conf.yml` as template for version configration to organize the information.
+    * The default build with `make` uses `config.yml` as version configuration, so `mv version_conf.yml config.yml` to get a comprehensive resume.
 * Automatically generate the `config.pdf` and `config.png` with GitHub Actions.
 * Add extra LaTeX commands to suit more applications.
 * Comply with rules from USC recommendations in VMock.
@@ -28,34 +29,35 @@ It will be automatically generated after committing the `config.yml`.
 There are two versions of this project:
 
 * V1.0: `master.yml` for all information and `config.yml` for version configuration. You can freely add as many version configurations as you like without worrying about the consistency of content.
+    * the release is on master branch, while the development branch will be `v1`.
+    * it doesn't include any instruction related to V0.9 to avoid confusion.
 * V0.9: everything is included in one file `config.yml`. Even though it is convenient to generate one resume, it is hard to generalize one master copy of resume and leads to problem of inconsistency across different version with modification.
+    * checkout for this version with `git checkout v0.9` or use tag `V0.9`.
 
 There are different ways to generate PDF:
 
-* GitHub Actions does everything except
-    * For V1.0, filling at least `master.yml` and `config.yml` for version configuration
-    * For V0.9, filling `config.yml` (MOST convenient)
 * Install TeX command line tool and Use YAML to maintain content
     * In docker (Kind of convenient)
     * Local machine (Relative hard, but Best for Privacy)
+* GitHub Actions does everything except
+    * For V1.0, filling at least `master.yml` and `config.yml` for version configuration
 
-In this README, I only present the GitHub Actions method and the others will be in [Methods](./docs/methods.md).
+In this README, I present the 2-commit GitHub Actions method and the others will be in [Methods](./docs/methods.md).
 
-### GitHub Action
+## GitHub Action (2-commit)
 
 Steps:
 
 1. Fork this repository.
 2. Learn the format of YAML: [Simple Guide](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
-3. Read the short [Practical Guide](#practical-guide) for `config.yml` to know the most-used structures.
-4. Refer to [config.yml format](#configyml-format), study the structures by looking at `config.pdf` and `config.yml` side by side.
-5. Modify `config.yml` with your content and make sure `config.yml` is syntactically correct.
+3. Read the short [Practical Guide](#practical-guide) for `master.yml` to know the most-used structures.
+4. Refer to [Master Format](./format.md#masteryml-master-format), study the structures by looking at `master.pdf` and `master.yml` side by side.
     * [Online Lint](https://www.yamllint.com/) if you need.
-6. Commit it to the repository.
-7. ~~Then make a cup of tea.~~ Wait for the GitHub Actions to complete. Link example: <https://github.com/Karl-Han/resume/actions>
-8. Get the `config.pdf` in the repository! Your new Resume! You are all set!
-
-For further reuse, please follow me or refer to [sproogen/modern-resume-theme](https://github.com/sproogen/modern-resume-theme) website. I have [my own website](https://www.iwktd.com/) with this template.
+5. Commit it to the repository for your `master_version_conf.yml`.
+6. ~~Then make a cup of tea.~~ Wait for the GitHub Actions to complete. Link example: <https://github.com/Karl-Han/resume/actions>
+7. Get the `master_version_conf.pdf` in the repository! Your new Resume! You are all set!
+8. Rename and modify the `master_version_conf.yml`, e.g., `config.yml`, by referring to [Version Configuration format](./format.md#version-configuration).
+9. Modify `CONFIG_NAME`, e.g., `config`, in Makefile to change the target version configuration and commit it again.
 
 ## Practical Guide
 
@@ -87,6 +89,7 @@ You can see the example in `config.yml`.
 Other files, which may not be useful:
 
 * Motivation for the changes to the repository: [Motivation](./docs/motivation.md)
+* Further reuse, please follow me or refer to [sproogen/modern-resume-theme](https://github.com/sproogen/modern-resume-theme) website. I have [my own website](https://www.iwktd.com/) with this template.
 
 ## License
 
@@ -106,7 +109,7 @@ This repository is originated from [sb2nov/resume](https://github.com/sb2nov/res
 ### Shorthands and Concepts
 
 * `master.yml`: the master copy of all your resume information. It should be comprehensive, because all your different versions of resume is based on it.
-* Version configuration: for example `config.yml` is a sample for a version of the resume. It should be specific for a purpose, e.g., a kind of position or a position in specific company.
+* Version configuration: for example `version_conf.yml` and `config.yml` is samples for versions of the resume. It should be specific for a purpose, e.g., a kind of position or a position in specific company.
 
 ### Extra LaTeX Command
 

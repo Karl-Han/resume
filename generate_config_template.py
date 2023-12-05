@@ -1,8 +1,10 @@
 import sys
 import yaml
 
-master_name = 'master.yml' if len(sys.argv) == 1 else sys.argv[2]
-target_name = 'version_conf.yml' if len(sys.argv) < 2 else sys.argv[2]
+master_name = 'master.yml' if len(sys.argv) == 2 else sys.argv[1]
+target_name = 'master_version_conf.yml' if len(sys.argv) == 3 else sys.argv[2]
+
+print(f"master file is {master_name} and version configuration is {target_name}")
 
 def main(filename, target_name):
     with open(filename, "r") as f:
