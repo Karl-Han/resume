@@ -1,0 +1,191 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Reduce spacing after section
+\titlespacing\section{0pt}{12pt}{10pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeItemOne}[1]{
+  \item\small{#1}
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \small{#3} & \small{#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textbf{\small#3} & \small{#4} \\
+    \end{tabular*}\vspace{-10pt}
+}
+
+\newcommand{\resumeSubheadingNoTitle}[2]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 %\\
+      % \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\resumeSubSubItem}[1]{\resumeItemOne{#1}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-10pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\textbf{\href{https://www.linkedin.com/in/kunlinhan/}{\LARGE {Kunlin Han}}} \\
+{
+    \href{mailto:{kunlinha@usc.edu}}{{kunlinha@usc.edu}} $|$ \href{https://www.linkedin.com/in/kunlinhan/}{www.linkedin.com/in/kunlinhan/} $|$ \href{https://github.com/Karl-Han}{Github (Karl-Han)}  $|$ \href{https://www.iwktd.com/}{Detailed Resume} 
+}\section{EDUCATION}
+\resumeSubHeadingListStart
+\resumeSubheading
+    {University of Southern California (USC)}{Los Angeles, CA}
+    {Master of Electrical Engineering (MS Honors Fellow); GPA: 4.0/4.0
+}{Dec 2021 - Dec 2023}
+\resumeSubheading
+    {South China Normal University (SCNU)}{Guangzhou, China}
+    {Bachelor of Network Engineering; GPA: 3.78/4.0; Rank: 1/72
+}{Sep 2017 - Jun 2021}
+\resumeSubHeadingListEnd
+
+
+
+\section{EXPERIENCE}
+\resumeSubHeadingListStart
+\resumeSubheading
+    {CS Department, USC}{Los Angeles, CA}
+    {Graduate Teaching Assistant}{May 2022 - Aug 2022}
+\resumeSubHeadingListEnd
+
+
+
+\section{PROJECTS}
+\resumeSubHeadingListStart
+\resumeSubheadingNoTitle
+    {Branch Predictor and Prefetcher Implementation and Simulation}{Aug 2023 - Oct 2023}
+\resumeItemListStart
+	\resumeItemOne{Implemented and simulated bimodal predictor and correlated-branch predictor with Pin Tool to compare performance on benchmarks.}
+	\resumeItemOne{Designed and explored design space by trading off cache hierarchy, execution unit and issue width on OoO CPU on gem5, and achieve 25\% higher throughput with 5\% extra transistor count comparing with the baseline design.}
+	\resumeItemOne{Studied and simulated prefetchers, including Markov predictor, content-directed prefetcher and access map pattern matching prefetcher.}
+\resumeItemListEnd
+\resumeSubheadingNoTitle
+    {Tomasulo Out-of-Order CPU Design}{Jun 2023 - Aug 2023}
+\resumeItemListStart
+	\resumeItemOne{Implemented Issue Unit, 2-stage Dispatch Unit, Re-Order Buffer and FPGA-friendly Copy-Free Check Pointing for FRAT and RRAT.}
+	\resumeItemOne{Integrated, synthesized and programmed the overall system on Xilinx Artix-7 FPGA board.}
+	\resumeItemOne{Validated the correctness of design with both simulation and on-chip logic analyzer (Chipscope).}
+\resumeItemListEnd
+\resumeSubheadingNoTitle
+    {512-bit 6T SRAM Array Design}{Jan 2023 - May 2023}
+\resumeItemListStart
+	\resumeItemOne{Designed and drew layout of 1-bit SRAM cell, row/column decoder, sense amplifier, write driver, precharge circuit, latch and flip-flop with Cadence Virtuoso and GPDK 45nm.}
+	\resumeItemOne{Achieved the Read SNM of 210 mV and Write SNM of 395 mV by proper sizing with VDD=1V.}
+	\resumeItemOne{Integrated components into 4 8x16-bit SRAM banks to construct a 512-bit SRAM Array with the area of 2208 $nm^2$ in 2.6 Ghz (cycle time=0.4 ns).}
+	\resumeItemOne{Measured the power consumption with Spectre, in which the average consumption for reading is 21.2 fJ, the average consumption for writing is 342 fJ and leakage is 20 fJ.}
+	\resumeItemOne{Validated the correctness of all aforementioned components with vector file in Spectre and passed DRC and LVS.}
+\resumeItemListEnd
+\resumeSubheadingNoTitle
+    {Extendable Asynchronous SNN Accerlator Design}{Jan 2023 - May 2023}
+\resumeItemListStart
+	\resumeItemOne{Designed extendable asynchronous SNN accelerator in SystemVerilog with SystemVerilogCSP library on a 5x5 filter and 25x25 ifmap with stride=1.}
+	\resumeItemOne{Implemented configurable fork-join computation module for partial computation.}
+	\resumeItemOne{Integrated computation modules with two memory modules on a deterministic mesh network.}
+	\resumeItemOne{Verified correctness of computation module and the accelerator separately with timestep=2 in QuestaSim.}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+
+\section{LEADERSHIP AND INVOLVEMENT}
+\resumeSubHeadingListStart
+\resumeSubheading
+    {Hope Center, Reality L.A.}{Los Angeles, CA}
+    {Volunteer}{Mar 2022 - Aug 2022}
+\resumeSubheading
+    {Network Club, SCNU}{Guangzhou, China}
+    {Vice President of Technical Department}{Sep 2017 - Jun 2019}
+\resumeSubHeadingListEnd
+
+
+
+\section{SKILLS}
+\textbf{Programming Languages}: Python, C/C++, Verilog, VHDL, SystemVerilog, Tcl, Perl, Java, Rust, SQL\\ 
+\textbf{Libraries}: Scrapy, BeautifulSoup, Requests, Pyrogram, Django\\ 
+\textbf{EDA Tools}: Virtuoso, Spectre, QuestaSim, Calibre, Intel Quartus, Xilinx Vivado, Innovus, StarRC, PrimeTime\\ 
+\textbf{Protocols}: AXI, PCIe, MOESI \hspace{\fill} \textbf{Tools:} UNIX, Linux, VIM, Git, Docker, Makefile\\ 
+
+
+\end{document}

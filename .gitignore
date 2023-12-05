@@ -1,11 +1,11 @@
 # Archieve
 Archieve/
 *.yml
+*.pdf
+*.tex
 !master.yml
 !config.*
 !config_manual.yml
-*.pdf
-*.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
