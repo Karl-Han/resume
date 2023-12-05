@@ -2,8 +2,7 @@ basics:
   email: true
   extra_links: true
   name: true
-  phone: false
-  website: true
+  phone: true
 order:
 - mode: none
   section_name: Summary
@@ -12,11 +11,8 @@ order:
   title:
   - University of Southern California (USC): all
   - South China Normal University (SCNU): all
-- mode: enabled
-  section_name: Experience
-  title:
-  - CS Department, USC: no_description
-  - Lab 131, School of Computer Science, SCNU: none
+- mode: all
+  section_name: Skills
 - mode: enabled
   section_name: Projects
   title:
@@ -32,9 +28,12 @@ order:
   - Full-Custom Design Layout of Arbiter System with Multiplier and Divider: none
   - RSA, AES and SHA-3 Implementation in Rust: none
 - mode: enabled
+  section_name: Experience
+  title:
+  - CS Department, USC: no_description
+  - Lab 131, School of Computer Science, SCNU: none
+- mode: enabled
   section_name: Leadership and Involvement
   title:
   - Hope Center, Reality L.A.: no_description
   - Network Club, SCNU: no_description
-- mode: all
-  section_name: Skills

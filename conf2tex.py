@@ -71,30 +71,25 @@ def get_section(section, conf_section):
     return f'{sec}\n\n'
 
 def get_heading(conf, enable_info):
-    website = conf['website']
-    url = urlsplit(website)
-    website_path = None
-    if url.path == '/':
-        website_path = url.netloc
-    else:
-        website_path = url.netloc + url.path
     name = conf['name']
     email = conf['email']
+    website = ""
 
     # order for info: email, website[, phone][, extra_links]*
     heading = r"""\textbf{\href{%s}{\LARGE {%s}}} \\
 {
-    \href{mailto:{%s}}{{%s}} $|$ \href{%s}{%s}"""
+    \href{mailto:{%s}}{{%s}}"""
 
     if "phone" in conf and enable_info['phone']:
         phone = conf['phone']
         heading += " $|$ Phone: \href{{tel:{{}}}}{{{}}}".format(phone, phone)
     if "extra_links" in conf and enable_info['extra_links']:
+        website = list(conf['extra_links'][0].values())[0]
         for i in conf['extra_links']:
             heading += " $|$ \href{{{}}}{{{}}} ".format(list(i.values())[0], list(i.keys())[0])
 
     heading += "\n}"
-    return heading % (website, name, email, email, website, website_path)
+    return heading % (website, name, email, email)
 
 def to_tex(conf):
     """convert YAML to tex format
@@ -133,8 +128,11 @@ def main():
         exit(1)
 
     dst_filename = None
-    if len(sys.argv) == 3:
+    if len(sys.argv) >= 3:
         dst_filename = sys.argv[2] 
+    master_filename = "master.yml"
+    if len(sys.argv) == 4:
+        master_filename = sys.argv[3]
     if dst_filename is not None and "tex" not in dst_filename: 
         print(f"Please enter destination tex file with .tex instead of {dst_filename}")
         exit(1)
@@ -143,7 +141,7 @@ def main():
     with open(src_filename, "r") as f:
         s = f.read()
         conf = yaml.load(s, yaml.FullLoader)
-    with open("master.yml", "r") as f:
+    with open(master_filename, "r") as f:
         s = f.read()
         master = yaml.load(s, yaml.FullLoader)
         for k, v in master.items():

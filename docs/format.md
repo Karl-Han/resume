@@ -51,7 +51,11 @@ This file is to
 - order the sections in the correct order
 - enable specific entry with/without description
 
-The following is the manual version of version configuration to better understand the format. I suggest you to generate the version configuration from the master copy by `python generate_config_template.py [master.yml] [version_conf.yml]`.
+The following is the manual version of version configuration to better understand the format. I suggest you to generate the version configuration from the master copy by `python generate_config_template.py [master.yml] [master_version_conf.yml]`.
+
+Notes:
+
+- when section's mode is all, you have no control over entry's mode, i.e., if you want some entries have no description, you have to specify the section's mode to enabled.
 
 ```yaml
 # Basics Info

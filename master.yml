@@ -2,8 +2,8 @@
 name: Kunlin Han
 email: kunlinha@usc.edu
 phone: 123-456-7890
-website: https://www.linkedin.com/in/kunlinhan/
 extra_links:
+  - Linkedin (kunlinhan): https://www.linkedin.com/in/kunlinhan/
   - Github (Karl-Han): https://github.com/Karl-Han
   - Detailed Resume: https://www.iwktd.com/
 
@@ -12,7 +12,6 @@ content:
     layout: text
     content: 
       - Proactive learner who changed Master degree from Computer Science to Electrical Engineering at USC (GPA 4.0).
-      - Self-motivated and problem-solving student working on UVM-based testbench for functional digital verification and OpenSPARC T1 for computer architecture design. 
       - Participated proactively in courses and organized study groups. Passionate about building bonds with local community. 
       - Eager to join $<company>$ as $<title>$ to contribute to $<company's benefit>$.
   - title: Education
