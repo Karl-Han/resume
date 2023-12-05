@@ -1,13 +1,6 @@
 # Resume
 
-> Original Repository: <https://github.com/sb2nov/resume>
-> Original Repository Files: `original/`
 > About me: <https://www.iwktd.com/>
-
-Original Repository Feature:
-
-* A single-page, one-column resume for general purpose.
-* Base latex templates and fonts to provide ease of use.
 
 Difference comparing with original repository:
 
@@ -25,7 +18,7 @@ Difference comparing with original repository:
 
 ## Preview
 
-![Resume Screenshot](config.png)
+![Resume Screenshot](./config.png)
 
 It will be automatically generated after committing the `config.yml`.
 
@@ -38,7 +31,7 @@ There are different ways to generate PDF:
     * In docker (Kind of convenient)
     * Local machine (Relative hard, but Best for Privacy)
 
-In this README, I will only present the GitHub Actions method and the others will be in [Methods](./methods.md).
+In this README, I will only present the GitHub Actions method and the others will be in [Methods](./docs/methods.md).
 
 ### GitHub Action
 
@@ -58,7 +51,7 @@ For further reuse, please follow me or refer to [sproogen/modern-resume-theme](h
 
 ### Local Compilation
 
-You have to install LaTeX, Python3 and Make in the command line, I would recommend you to use BasicTeX with homebrew: https://tex.stackexchange.com/questions/307483/setting-up-basictex-homebrew
+You have to install LaTeX, Python3 and Make in the command line, I would recommend you to use BasicTeX with homebrew: <https://tex.stackexchange.com/questions/307483/setting-up-basictex-homebrew>
 
 Possible LaTeX package requirements: `tlmgr install titlesec preprint marvosym enumitem babel-english`
 
@@ -104,6 +97,11 @@ Thanks to [Firfi's PR](https://github.com/sb2nov/resume/pull/46), I integrated t
 Format is MIT but all the data is owned by Kunlin Han.
 
 ## Acknowledge
+
+Original Repository Feature:
+
+* A single-page, one-column resume for general purpose.
+* Base latex templates and fonts to provide ease of use.
 
 This repository is originated from [sb2nov/resume](https://github.com/sb2nov/resume). Thank Sourabh Bajaj for this well organized latex template. For the original files, please refer to `original/` and the [original repository](https://github.com/sb2nov/resume).
 
