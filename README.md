@@ -2,10 +2,11 @@
 
 > About me: <https://www.iwktd.com/>
 
-Difference comparing with original repository:
+New features comparing with original repository:
 
-* Summarize user-friendly instructions in README
-* Use `config.yml` to organize the information to share information across different purpose.
+* Summarize user-friendly instructions in README.
+* Use `master.yml` to store all information you want to include in the resume.
+* Use `config.yml` as template for version configration to organize the information.
 * Automatically generate the `config.pdf` and `config.png` with GitHub Actions.
 * Add extra LaTeX commands to suit more applications.
 * Comply with rules from USC recommendations in VMock.
@@ -24,14 +25,21 @@ It will be automatically generated after committing the `config.yml`.
 
 ## How to Use
 
+There are two versions of this project:
+
+* V0.9: everything is included in one file `config.yml`. Even though it is convenient to generate one resume, it is hard to generalize one master copy of resume and leads to problem of inconsistency across different version with modification.
+* V1.0: `master.yml` for all information and `config.yml` for version configuration. You can freely add as many version configurations as you like without worrying about the consistency of content.
+
 There are different ways to generate PDF:
 
-* GitHub Actions does everything except filling `config.yml` (MOST convenient)
+* GitHub Actions does everything except
+    * For V1.0, filling at least `master.yml` and `config.yml` for version configuration (MOST convenient)
+    * For V0.9, filling `config.yml` (MOST convenient)
 * Install TeX command line tool and Use YAML to maintain content
     * In docker (Kind of convenient)
     * Local machine (Relative hard, but Best for Privacy)
 
-In this README, I will only present the GitHub Actions method and the others will be in [Methods](./docs/methods.md).
+In this README, I only present the GitHub Actions method and the others will be in [Methods](./docs/methods.md).
 
 ### GitHub Action
 
@@ -48,14 +56,6 @@ Steps:
 8. Get the `config.pdf` in the repository! Your new Resume! You are all set!
 
 For further reuse, please follow me or refer to [sproogen/modern-resume-theme](https://github.com/sproogen/modern-resume-theme) website. I have [my own website](https://www.iwktd.com/) with this template.
-
-### Local Compilation
-
-You have to install LaTeX, Python3 and Make in the command line, I would recommend you to use BasicTeX with homebrew: <https://tex.stackexchange.com/questions/307483/setting-up-basictex-homebrew>
-
-Possible LaTeX package requirements: `tlmgr install titlesec preprint marvosym enumitem babel-english`
-
-Python package requirements: `python3 -m pip install -r requirements.txt`
 
 ## Practical Guide
 
@@ -82,15 +82,11 @@ If you want to re-order the sections, just look at the [order keyword](#configym
 
 You can see the example in `config.yml`.
 
-## Motivation
+## MISC
 
-I love to use structured format, like Markdown and LaTeX, to present my notes and article. So I choose Sourabh Bajaj's template. And I modified the original template to fit USC's requirements of better resume on VMock.
+Other files, which may not be useful:
 
-Also, I have set up personal resume website: <https://www.iwktd.com/> to let others know me comprehensively instead of one-page resume.
-
-So I have the demand to share the same information across different repository and use YAML as the language to organize my information.
-
-Thanks to [Firfi's PR](https://github.com/sb2nov/resume/pull/46), I integrated the GitHub Actions into this repository, so that you no longer need to install the environment or Docker in your computer!
+* Motivation for the changes to the repository: [Motivation](./docs/motivation.md)
 
 ## License
 
@@ -107,44 +103,10 @@ This repository is originated from [sb2nov/resume](https://github.com/sb2nov/res
 
 ## Appendix
 
-### config.yml format
+### Shorthands and Concepts
 
-Some of them can be replaced with `""` to set them to blank, but it depends.
-
-Below is a full list of content options.
-
-```yml
-name: Your name
-email: Your email
-phone: Your phone
-website: Your website or ""
-
-order:
-  - Section 1 title
-  - Section 2 title
-  - Section 3 title
-  # You can omit sections to implicitly set section.show = false...
-content:
-  - title: Section Name
-    layout: list # (options: list, text)
-    content:
-      - show: false # (options: true, false)
-        title: Item Name (eg. Company or Project name)
-        location: Location of this title
-        # These two are **optional**, but you have to use both or none
-        sub_title: Sub title (eg. Qualification or Job title)(optional)
-        duration: Duration for the sub-title, e.g., Aug. 2022-Sept. 2023
-
-        # NOT USED. link: Web link (eg. https://sproogen.github.io/modern-resume-theme)(optional)
-        description: # this will include new lines to allow paragraphs
-          - Point1 Main content area for the list item.
-          - Point2 for this Item
-  - title: Section Name
-    layout: text # (options: list, text)
-    content: # this will include new lines to allow paragraphs
-      - Line1 This is where you can write a little more about yourself. You could title this section **Interests** and include some of your other interests.
-      - Line2 Or you could title it **Skills** and write a bit more about things that make you more desirable, like *leadership* or *teamwork*
-```
+* `master.yml`: the master copy of all your resume information. It should be comprehensive, because all your different versions of resume is based on it.
+* Version configuration: for example `config.yml` is a sample for a version of the resume. It should be specific for a purpose, e.g., a kind of position or a position in specific company.
 
 ### Extra LaTeX Command
 

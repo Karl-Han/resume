@@ -1,7 +1,9 @@
 # Archieve
 Archieve/
-!config.*
 *.yml
+!master.yml
+!config.*
+!config_manual.yml
 *.pdf
 *.tex
 
