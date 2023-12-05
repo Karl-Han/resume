@@ -6,6 +6,7 @@ Archieve/
 !master.yml
 !config.*
 !config_manual.yml
+!version_conf.yml
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

@@ -2,7 +2,7 @@
 
 As I wrote more resumes for different company, even for different slightly different positions in the same company, I found it hard to maintain a sole copy that all the resumes originates from. And this leads to inconsistency in my different resume.
 
-In order to 
+In order to make the content of resume consistent, I separate the version configuration, which is resume version specific for some purpose, from the master copy. In this way, all my generated pdfs can be updated whenever I made modifications to the master copy, and of course, most of the time, I will just need to update specific one.
 
 ## Before V1.0
 

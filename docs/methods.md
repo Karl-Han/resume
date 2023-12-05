@@ -1,10 +1,10 @@
- Methods
+# Methods
 
 After V1.0, there are two parts to configure:
 
 * `master.yml`: the master copy of all your resume information. It should be comprehensive, because all your different versions of resume is based on it.
 * `config.yml`: sample for a version of the resume. It should be specific for a purpose, e.g., a kind of position or a position in specific company.
-    * It should be generated with `python generate_config_template.py` and get modified accordingly.
+    * It should be generated with `make gen_vc` and get modified accordingly.
     * `make CONFIG_NAME=general build` can build the `general.pdf` with `general.yml` and `master.yml`
 
 There are three ways to generate PDF:
@@ -13,17 +13,15 @@ There are three ways to generate PDF:
 * Install TeX command line tool and Use YAML to maintain content
     * In docker (Easiest to Start)
         1. Read General Steps
-        2. Refer to [config.yaml format](./format.md#configyml-format)
-        3. Modify `config.yaml` accordingly
-        4. Refer to [Compiler using Docker](#compile-using-docker) and RUN
-        5. You get the `config.pdf`
+        2. Refer to [Compiler using Docker](#compile-using-docker) and RUN
+        3. You get the `config.pdf`
     * Local machine
 
 ## General Steps
 
 1. Refer to [practical guide](../README.md#practical-guide) to know the structure and available keys in YAML
 2. Write your master copy `master.yml` accordingly by referring to `master.yml` and output `config.pdf`
-3. Generate your comprehensive version, e.g., `config.yml`, by `python generate_config_template.py [master.yml] [version_conf.yml]`.
+3. Generate your comprehensive version configuration, e.g., `version_conf.yml`, by `make gen_vc` or `python generate_config_template.py [master.yml] [version_conf.yml]`.
 4. Compile and get the `config.pdf` from the version configuration.
     * Compile with `make CONFIG_NAME=general build` for version configuration file `general.yml`
 

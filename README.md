@@ -27,13 +27,13 @@ It will be automatically generated after committing the `config.yml`.
 
 There are two versions of this project:
 
-* V0.9: everything is included in one file `config.yml`. Even though it is convenient to generate one resume, it is hard to generalize one master copy of resume and leads to problem of inconsistency across different version with modification.
 * V1.0: `master.yml` for all information and `config.yml` for version configuration. You can freely add as many version configurations as you like without worrying about the consistency of content.
+* V0.9: everything is included in one file `config.yml`. Even though it is convenient to generate one resume, it is hard to generalize one master copy of resume and leads to problem of inconsistency across different version with modification.
 
 There are different ways to generate PDF:
 
 * GitHub Actions does everything except
-    * For V1.0, filling at least `master.yml` and `config.yml` for version configuration (MOST convenient)
+    * For V1.0, filling at least `master.yml` and `config.yml` for version configuration
     * For V0.9, filling `config.yml` (MOST convenient)
 * Install TeX command line tool and Use YAML to maintain content
     * In docker (Kind of convenient)

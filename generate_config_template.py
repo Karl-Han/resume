@@ -2,7 +2,7 @@ import sys
 import yaml
 
 master_name = 'master.yml' if len(sys.argv) == 1 else sys.argv[2]
-target_name = 'config.yml' if len(sys.argv) < 2 else sys.argv[2]
+target_name = 'version_conf.yml' if len(sys.argv) < 2 else sys.argv[2]
 
 def main(filename, target_name):
     with open(filename, "r") as f:
