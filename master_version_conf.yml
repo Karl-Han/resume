@@ -1,0 +1,40 @@
+basics:
+  email: true
+  extra_links: true
+  name: true
+  phone: true
+  website: true
+order:
+- mode: all
+  section_name: Summary
+- mode: all
+  section_name: Education
+  title:
+  - University of Southern California (USC): all
+  - South China Normal University (SCNU): all
+- mode: all
+  section_name: Experience
+  title:
+  - CS Department, USC: all
+  - Lab 131, School of Computer Science, SCNU: all
+- mode: all
+  section_name: Projects
+  title:
+  - Branch Predictor and Prefetcher Implementation and Simulation: all
+  - Arm Cortex-A7 MPCore Block-Level Implementation: all
+  - Performance Analysis of Predictors with Pin Tool: all
+  - Tomasulo Out-of-Order CPU Design: all
+  - PCIe Physical Layer Design: all
+  - General Purpose Graphical Processing Unit (GPGPU): all
+  - 512-bit 6T SRAM Array Design: all
+  - Extendable Asynchronous SNN Accerlator Design: all
+  - 5-stage Pipeline MIPS Processor Design: all
+  - Full-Custom Design Layout of Arbiter System with Multiplier and Divider: all
+  - RSA, AES and SHA-3 Implementation in Rust: all
+- mode: all
+  section_name: Leadership and Involvement
+  title:
+  - Hope Center, Reality L.A.: all
+  - Network Club, SCNU: all
+- mode: all
+  section_name: Skills

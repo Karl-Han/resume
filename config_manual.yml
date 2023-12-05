@@ -1,0 +1,41 @@
+# Basics Info
+# Mandatory: name, email
+# Optional: phone, website, extra_links
+basics:
+  phone: false
+  website: true
+  extra_links: true
+
+# Section Order and Included Content
+order:
+  # mode: [all | enabled | none]
+  - section_name: Education
+    mode: all
+    extra: none
+  - section_name: Skills
+    mode : all
+  - section_name: Experience
+    mode: enabled
+    # Enabled title with `<title for entry>: [all | no_description | none]`
+    # implemented with `<title for entry> in entry['title']` in python
+    title:
+      - CS Department, USC: no_description
+  - section_name: Projects
+    mode: enabled
+    title:
+      - Branch Predictor: all
+      - Arm: none
+      - Pin Tool: none
+      - Tomasulo: all
+      - PCIe: none
+      - GPGPU: none
+      - SRAM: all
+      - SNN: all
+      - MIPS: none
+      - Layout: none
+      - RSA: none
+  - section_name: Leadership and Involvement
+    mode: enabled
+    title:
+      - Hope Center: no_description
+      - Network Club: no_description

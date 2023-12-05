@@ -2,23 +2,39 @@ import yaml
 import sys
 from urllib.parse import urlsplit
 
-def get_section(section):
+def is_part_of_section(entry_title, conf_titles):
+    for title in conf_titles:
+        (k, v), = title.items()
+        if k in entry_title and v != 'none':
+            return v
+    return None
+
+def get_section(section, conf_section):
     """parse section to tex format
 
     Args:
         section (dict)
+        conf_section (dict)
 
     Returns:
         tex: str
     """
-    if 'show' in section and section['show'] == False:
-        return 
+    if conf_section['mode'] == 'none':
+        return ""
+    all_enabled = False
+    if conf_section['mode'] == 'all':
+        all_enabled = True
+
     sec = f"\\section{{{section['title'].upper()}}}\n"
+
     if section['layout'] == 'list':
         sec += "\\resumeSubHeadingListStart\n"
-        for item in section['content']:
-            if 'show' in item and item['show'] == False:
-                continue
+        for entry in section['content']:
+            mode = None
+            if all_enabled == False:
+                mode = is_part_of_section(entry['title'], conf_section['title'])
+                if mode is None:
+                    continue
 
             subheading = r"""\resumeSubheading
     {%s}{%s}
@@ -27,18 +43,18 @@ def get_section(section):
             subheading_notitle = r"""\resumeSubheadingNoTitle
     {%s}{%s}
 """
-            if 'sub_title' in item:
-                sec += subheading % (item['title'], item['location'], item['sub_title'], item['duration'])
+            if 'sub_title' in entry:
+                sec += subheading % (entry['title'], entry['location'], entry['sub_title'], entry['duration'])
             else:
-                if 'location' not in item:
-                    item['location'] = ''
-                sec += subheading_notitle % (item['title'], item['location'])
-            if 'extra' in item:
-                sec += "\\vspace{{+5pt}}\\\\ \\small{{{}}}\\\\ ".format(item['extra'])
+                if 'location' not in entry:
+                    entry['location'] = ''
+                sec += subheading_notitle % (entry['title'], entry['location'])
+            if 'extra' in entry and 'extra' in conf_section and conf_section['extra'] == 'enabled':
+                sec += "\\vspace{{+5pt}}\\\\ \\small{{{}}}\\\\ ".format(entry['extra'])
             desc = ""
-            if 'description' in item:
+            if 'description' in entry and mode != 'no_description':
                 desc += "\\resumeItemListStart\n"
-                for i in item['description']:
+                for i in entry['description']:
                     desc += "\t\\resumeItemOne{%s}\n" % (i)
                 desc += "\\resumeItemListEnd\n"
             sec += desc
@@ -54,15 +70,7 @@ def get_section(section):
         raise Exception("No 'layout' in the section.")
     return f'{sec}\n\n'
 
-def get_heading(conf):
-    heading = r"""\textbf{\href{%s}{\LARGE {%s}}} \\
-{
-    \href{mailto:{%s}}{{%s}} $|$ \href{%s}{%s}"""
-    if "extra_links" in conf:
-        print(conf['extra_links'])
-        for i in conf['extra_links']:
-            heading += " $|$ \href{{{}}}{{{}}} ".format(list(i.values())[0], list(i.keys())[0])
-
+def get_heading(conf, enable_info):
     website = conf['website']
     url = urlsplit(website)
     website_path = None
@@ -72,9 +80,19 @@ def get_heading(conf):
         website_path = url.netloc + url.path
     name = conf['name']
     email = conf['email']
-    if "phone" in conf:
+
+    # order for info: email, website[, phone][, extra_links]*
+    heading = r"""\textbf{\href{%s}{\LARGE {%s}}} \\
+{
+    \href{mailto:{%s}}{{%s}} $|$ \href{%s}{%s}"""
+
+    if "phone" in conf and enable_info['phone']:
         phone = conf['phone']
         heading += " $|$ Phone: \href{{tel:{{}}}}{{{}}}".format(phone, phone)
+    if "extra_links" in conf and enable_info['extra_links']:
+        for i in conf['extra_links']:
+            heading += " $|$ \href{{{}}}{{{}}} ".format(list(i.values())[0], list(i.keys())[0])
+
     heading += "\n}"
     return heading % (website, name, email, email, website, website_path)
 
@@ -91,18 +109,19 @@ def to_tex(conf):
     with open("preamble.tex", "r") as f:
         tex = f.read()
     
-    tex += get_heading(conf)
-    if 'order' in conf:
-        section_dict = {}
-        for section in conf['content']:
-            # enumerate global content
-            section_dict[section['title']] = section
-        for sec_name in conf['order']:
-            # decide the order and content of sections
-            tex += get_section(section_dict[sec_name])
-    else: 
-        for section in conf['content']:
-            tex += get_section(section)
+    tex += get_heading(conf, conf['basics'])
+
+    assert('order' in conf)
+
+    section_dict = {}
+    for section in conf['content']:
+        # enumerate global content
+        section_dict[section['title']] = section
+    for sec_info in conf['order']:
+        # decide the order and content of sections
+        sec_name = sec_info['section_name']
+        tex += get_section(section_dict[sec_name], sec_info)
+
     tex += r"\end{document}"
     return tex
 
@@ -124,7 +143,11 @@ def main():
     with open(src_filename, "r") as f:
         s = f.read()
         conf = yaml.load(s, yaml.FullLoader)
-    
+    with open("master.yml", "r") as f:
+        s = f.read()
+        master = yaml.load(s, yaml.FullLoader)
+        for k, v in master.items():
+            conf[k] = v
     tex = to_tex(conf)
 
     if dst_filename:
